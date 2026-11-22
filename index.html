@@ -236,6 +236,7 @@
             text-decoration: none;
             margin: 0 10px;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .social-links a:hover {
@@ -333,7 +334,7 @@
                 <h3>Personal Portfolio</h3>
                 <p>The very website you are looking at right now. Designed with a sleek, responsive dark-mode UI, featuring smooth scrolling and clean, semantic HTML.</p>
                 <div class="project-links">
-                    <a href="https://github.com/Mikeoni27" target="_blank">View Code</a>
+                    <a href="https://github.com/Mikeoni27/Mikeoni27.github.io" target="_blank">View Code</a>
                 </div>
             </div>
 
@@ -344,15 +345,14 @@
     <footer>
         <div class="social-links">
             <a href="https://github.com/Mikeoni27" target="_blank">GitHub</a>
-            <a href="mailto:your-email@example.com">Email</a>
-            <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+            <a id="emailLink">Email</a> 
         </div>
         <p>&copy; 2024 Oni Michael Oluwatimileyin. Built from scratch.</p>
     </footer>
 
-    <!-- JavaScript for Scroll Animations -->
+    <!-- JavaScript -->
     <script>
-        // Simple fade-in effect on scroll
+        // 1. Scroll Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -363,6 +363,19 @@
 
         const hiddenElements = document.querySelectorAll('.fade-in');
         hiddenElements.forEach((el) => observer.observe(el));
+
+        // 2. Copy Email to Clipboard Feature
+        document.getElementById('emailLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevents the Windows popup
+            
+            const email = "michaeloni247@gmail.com"; 
+            
+            navigator.clipboard.writeText(email).then(() => {
+                alert('Email address copied to clipboard! (' + email + ')');
+            }).catch(err => {
+                alert('Failed to copy email. Please email me at: ' + email);
+            });
+        });
     </script>
 </body>
 </html>
